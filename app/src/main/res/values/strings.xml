@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Cows N Bulls</string>
 
-    <string name="dummy_button">Dummy Button</string>
+    <string name="start_game">Start Game</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="App_Details">Cows N Bulls is a good game</string>
     <string name="title_activity_start_page">StartPageActivity</string>

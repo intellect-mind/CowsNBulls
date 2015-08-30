@@ -53,4 +53,6 @@ public class GamePageActivity extends Activity {
 
     }
 
+    public void showGamePageActivity(View view) {
+    }
 }

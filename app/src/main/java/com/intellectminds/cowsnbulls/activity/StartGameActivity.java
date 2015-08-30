@@ -5,6 +5,7 @@ import com.intellectminds.cowsnbulls.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,7 +54,7 @@ public class StartGameActivity extends Activity {
         setContentView(R.layout.activity_start_game);
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
-        final View contentView = findViewById(R.id.fullscreen_content);
+       final View contentView = findViewById(R.id.game_logo);
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
@@ -99,20 +100,20 @@ public class StartGameActivity extends Activity {
 
         // Set up the user interaction to manually show or hide the system UI.
         contentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (TOGGLE_ON_CLICK) {
-                    mSystemUiHider.toggle();
-                } else {
-                    mSystemUiHider.show();
-                }
+          @Override
+         public void onClick(View view) {
+           if (TOGGLE_ON_CLICK) {
+                mSystemUiHider.toggle();
+            } else {
+                mSystemUiHider.show();
             }
-        });
+        }
+       });
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.start_game).setOnTouchListener(mDelayHideTouchListener);
     }
 
     @Override
@@ -156,5 +157,10 @@ public class StartGameActivity extends Activity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    public void showGamePageActivity(View view) {
+        Intent intent = new Intent(this, GamePageActivity.class);
+        startActivity(intent);
     }
 }
