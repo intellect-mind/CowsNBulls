@@ -4,11 +4,19 @@ import com.intellectminds.cowsnbulls.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputFilter;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -51,14 +59,37 @@ public class FullscreenActivity extends Activity {
 
         setContentView(R.layout.activity_fullscreen);
 
-        final View controlsView = findViewById(R.id.fullscreen_content_controls);
-        final View contentView = findViewById(R.id.fullscreen_content);
+        //final View controlsView = findViewById(R.id.fullscreen_content_controls);
+        //final View contentView = findViewById(R.id.fullscreen_content);
+
+        final EditText wordText = (EditText) findViewById(R.id.word_text);
+        wordText.setPaintFlags(wordText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        InputFilter[] filterArray = new InputFilter[2];
+        filterArray[0] = new InputFilter.AllCaps();
+        filterArray[1] = new InputFilter.LengthFilter(10);
+        wordText.setGravity(Gravity.CENTER);
+        wordText.setFilters(filterArray);
+
+        final TextView cows = (TextView) findViewById(R.id.cows);
+        final TextView bulls = (TextView) findViewById(R.id.bulls);
+
+        final GameLogic logic = new GameLogic();
+        Button button = (Button) findViewById(R.id.match_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                logic.matchWord(wordText.getText().toString());
+                cows.setText(String.valueOf(logic.getCows()));
+                bulls.setText(String.valueOf(logic.getBulls()));
+            }
+        });
 
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
-        mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
-        mSystemUiHider.setup();
-        mSystemUiHider
+        //mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
+        //mSystemUiHider.setup();
+        /*mSystemUiHider
                 .setOnVisibilityChangeListener(new SystemUiHider.OnVisibilityChangeListener() {
                     // Cached values.
                     int mControlsHeight;
@@ -70,7 +101,7 @@ public class FullscreenActivity extends Activity {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
                             // If the ViewPropertyAnimator API is available
                             // (Honeycomb MR2 and later), use it to animate the
-                            // in-layout UI controls at the bottom of the
+                            // in-border UI controls at the bottom of the
                             // screen.
                             if (mControlsHeight == 0) {
                                 mControlsHeight = controlsView.getHeight();
@@ -84,7 +115,7 @@ public class FullscreenActivity extends Activity {
                                     .setDuration(mShortAnimTime);
                         } else {
                             // If the ViewPropertyAnimator APIs aren't
-                            // available, simply show or hide the in-layout UI
+                            // available, simply show or hide the in-border UI
                             // controls.
                             controlsView.setVisibility(visible ? View.VISIBLE : View.GONE);
                         }
@@ -107,11 +138,11 @@ public class FullscreenActivity extends Activity {
                 }
             }
         });
-
+        */
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        //findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
 
     @Override
@@ -121,12 +152,13 @@ public class FullscreenActivity extends Activity {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+        //delayedHide(100);
     }
 
 
+
     /**
-     * Touch listener to use for in-layout UI controls to delay hiding the
+     * Touch listener to use for in-border UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
@@ -156,4 +188,5 @@ public class FullscreenActivity extends Activity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
 }
