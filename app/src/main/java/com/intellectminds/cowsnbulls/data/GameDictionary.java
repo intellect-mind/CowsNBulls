@@ -1,4 +1,4 @@
-package com.intellectminds.cowsnbulls;
+package com.intellectminds.cowsnbulls.data;
 
 import java.util.Dictionary;
 import java.util.Hashtable;

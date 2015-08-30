@@ -1,7 +1,8 @@
-package com.intellectminds.cowsnbulls;
+package com.intellectminds.cowsnbulls.logic;
+
+import com.intellectminds.cowsnbulls.data.GameDictionary;
 
 import java.util.Dictionary;
-import java.util.Scanner;
 
 /**
  * Created by enaamon on 2015-08-29.
