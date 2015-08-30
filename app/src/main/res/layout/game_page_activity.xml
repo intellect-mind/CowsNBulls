@@ -3,18 +3,6 @@
     android:layout_height="match_parent" android:background="@color/white"
     tools:context=".FullscreenActivity">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <!--
-    <TextView android:id="@+id/fullscreen_content" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
-        android:textStyle="bold" android:textSize="50sp" android:gravity="center"
-        android:text="@string/App_Details" />
-    -->
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/input_layout"
@@ -44,7 +32,7 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/result_layout"
+            android:id="@+id/image_layout"
             android:layout_width="299dp"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -53,84 +41,58 @@
             android:layout_marginLeft="15dp"
             android:weightSum="1">
 
-            <LinearLayout
-                android:id="@+id/cowResultLayout"
-                android:layout_width="81dp"
-                android:orientation="vertical"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.07">
+            <ImageView
+                android:id="@+id/cowImage"
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:layout_weight="1.00"
+                android:src="@mipmap/cow"
+                android:layout_marginLeft="0dp"/>
 
-
-                <ImageView
-                    android:id="@+id/cowImage"
-                    android:layout_width="40dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1.00"
-                    android:src="@mipmap/cow"
-                    android:layout_marginLeft="0dp"/>
-
-                <TextView
-                    android:id="@+id/cows"
-                    android:layout_width="30dip"
-                    android:layout_height="30dip"
-                    android:background="@drawable/border"
-                    android:paddingTop="7dp"
-                    android:paddingLeft="8dp"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="7dp" />
-
-
-                </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/bullResultLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="0.21">
-
-
-                <ImageView
-                    android:id="@+id/bullImage"
-                    android:layout_width="40dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1.00"
-                    android:src="@mipmap/bull"
-                    android:layout_marginLeft="0dp"/>
-
-                <TextView
-                    android:id="@+id/bulls"
-                    android:paddingTop="7dp"
-                    android:paddingLeft="8dp"
-                    android:textColor="@color/black"
-                    android:layout_width="30dip"
-                    android:layout_height="30dip"
-                    android:background="@drawable/border"
-                    android:layout_marginLeft="10dp" />
-
-            </LinearLayout>
-
+            <ImageView
+                android:id="@+id/bullImage"
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:layout_weight="1.00"
+                android:src="@mipmap/bull"
+                android:layout_marginLeft="0dp"/>
 
         </LinearLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="none"
+            android:layout_weight="1">
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/result_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <TableRow
+                    android:id="@+id/resultRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/guess_word"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/cows"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/bulls"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 
-    <!--
-    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay" android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-
-            <Button android:id="@+id/dummy_button" style="?metaButtonBarButtonStyle"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="@string/dummy_button" />
-
-        </LinearLayout>
-    </FrameLayout>
-    -->
 </FrameLayout>
