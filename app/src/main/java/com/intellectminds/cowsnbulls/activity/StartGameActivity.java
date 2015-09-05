@@ -5,6 +5,8 @@ import com.intellectminds.cowsnbulls.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -163,5 +165,19 @@ public class StartGameActivity extends Activity {
     public void showGamePageActivity(View view) {
         Intent intent = new Intent(this, GamePageActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        StartGameActivity.this.finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }
