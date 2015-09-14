@@ -26,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.GamePageActivity" />
+        <activity android:name=".activity.PauseWindow" android:theme="@style/AppTheme.PopUp"></activity>
     </application>
 
 </manifest>

@@ -169,6 +169,7 @@ public class StartGameActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        //super.onBackPressed();
         new AlertDialog.Builder(this)
                 .setMessage("Are you sure you want to exit?")
                 .setCancelable(false)
@@ -179,5 +180,6 @@ public class StartGameActivity extends Activity {
                 })
                 .setNegativeButton("No", null)
                 .show();
+
     }
 }

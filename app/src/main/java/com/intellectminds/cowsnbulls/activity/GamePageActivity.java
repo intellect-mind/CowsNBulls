@@ -1,30 +1,38 @@
 package com.intellectminds.cowsnbulls.activity;
 
-import com.intellectminds.cowsnbulls.R;
-import com.intellectminds.cowsnbulls.logic.GameLogic;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.intellectminds.cowsnbulls.R;
+import com.intellectminds.cowsnbulls.logic.GameLogic;
 
 public class GamePageActivity extends Activity {
 
     private static boolean createRow = false;
+    String msg = "Android : ";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(msg, "The onCreate() event");
 
         setContentView(R.layout.game_page_activity);
 
@@ -80,6 +88,18 @@ public class GamePageActivity extends Activity {
             }
         });
 
+        ImageButton pauseButton = (ImageButton)findViewById(R.id.pause);
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GamePageActivity.this,PauseWindow.class));
+                
+
+
+
+            }
+        });
+
     }
 
     @Override
@@ -87,6 +107,44 @@ public class GamePageActivity extends Activity {
         super.onPostCreate(savedInstanceState);
 
     }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        Log.d(msg, "The onPause() event");
+
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(msg, "The onStart() event");
+    }
+
+    /** Called when the activity has become visible. */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(msg, "The onResume() event");
+    }
+
+    /** Called when the activity is no longer visible. */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(msg, "The onStop() event");
+    }
+
+    /** Called just before the activity is destroyed. */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(msg, "The onDestroy() event");
+    }
+
 
     public void showGamePageActivity(View view) {
     }

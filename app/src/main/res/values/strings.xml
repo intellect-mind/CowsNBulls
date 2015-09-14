@@ -13,4 +13,6 @@
     <string name="title_activity_start_game">StartGameActivity</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="pause_button">pauseButton</string>
+    <string name="audio_button">Audio</string>
 </resources>
