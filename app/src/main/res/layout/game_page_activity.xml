@@ -1,19 +1,26 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:background="@color/white"
-    tools:context=".FullscreenActivity">
+    tools:context=".FullscreenActivity"
+    android:paddingTop="25dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/input_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="519dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
+<<<<<<< HEAD
         android:layout_marginTop="100dp"
         android:background="@color/white"
         android:visibility="gone">
 
+=======
+        android:layout_marginTop="25dp"
+        android:background="@color/white"
+        android:padding="2dp">
+>>>>>>> origin/master
 
         <EditText android:id="@+id/word_text"
             android:layout_width="200dip"
@@ -25,39 +32,42 @@
 
         <Button
             android:id="@+id/match_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
             android:ellipsize="start"
             android:text="Match"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:background="@color/blue"/>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/image_layout"
-            android:layout_width="299dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:weightSum="1">
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border"
+            android:padding="2dp">
+
+            <ImageView
+                android:id="@+id/wordImage"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/word"/>
 
             <ImageView
                 android:id="@+id/cowImage"
-                android:layout_width="40dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_weight="1.00"
-                android:src="@mipmap/cow"
-                android:layout_marginLeft="0dp"/>
+                android:src="@mipmap/cow" />
 
             <ImageView
                 android:id="@+id/bullImage"
-                android:layout_width="40dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_weight="1.00"
-                android:src="@mipmap/bull"
-                android:layout_marginLeft="0dp"/>
+                android:src="@mipmap/bull" />
 
         </LinearLayout>
 
@@ -65,36 +75,37 @@
 
         <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="280dp"
             android:scrollbars="none"
-            android:layout_weight="1">
+            android:fillViewport="false"
+            android:background="@drawable/border">
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/result_layout"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:stretchColumns="*">
 
                 <TableRow
-                    android:id="@+id/resultRow1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/guess_word"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/cows"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:id="@+id/bulls"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
-
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/black"/>
                 </TableRow>
-
             </TableLayout>
-
         </ScrollView>
 
     </LinearLayout>

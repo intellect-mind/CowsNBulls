@@ -1,7 +1,11 @@
 package com.intellectminds.cowsnbulls.activity;
 
 import android.app.Activity;
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+import android.graphics.Color;
+>>>>>>> origin/master
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -44,12 +48,6 @@ public class GamePageActivity extends Activity {
         wordText.setGravity(Gravity.CENTER);
         wordText.setFilters(filterArray);
 
-        final TextView word = (TextView) findViewById(R.id.guess_word);
-        final TextView cows = (TextView) findViewById(R.id.cows);
-        final TextView bulls = (TextView) findViewById(R.id.bulls);
-        TableLayout.LayoutParams layoutParams = new TableLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
         final TableLayout table = (TableLayout) findViewById(R.id.result_layout);
         //table.setLayoutParams(layoutParams);
 
@@ -61,16 +59,20 @@ public class GamePageActivity extends Activity {
 
                 logic.matchWord(wordText.getText().toString());
 
-                if(!createRow) {
-                    word.setText(wordText.getText().toString());
-                    cows.setText(String.valueOf(logic.getCows()));
-                    bulls.setText(String.valueOf(logic.getBulls()));
-                    createRow = true;
-                }
-                else {
+                {
                     TextView guessWord = new TextView(getApplicationContext());
+                    guessWord.setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
+                    guessWord.setGravity(Gravity.CENTER_HORIZONTAL);
+                    guessWord.setTextColor(Color.BLACK);
                     TextView cowsCount = new TextView(getApplicationContext());
+                    cowsCount.setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
+                    cowsCount.setGravity(Gravity.CENTER_HORIZONTAL);
+                    cowsCount.setTextColor(Color.BLACK);
                     TextView bullsCount = new TextView(getApplicationContext());
+                    bullsCount.setBackgroundDrawable(getResources().getDrawable(R.drawable.border));
+                    bullsCount.setGravity(Gravity.CENTER_HORIZONTAL);
+                    bullsCount.setTextColor(Color.BLACK);
+
                     guessWord.setText(wordText.getText().toString());
                     cowsCount.setText(String.valueOf(logic.getCows()));
                     bullsCount.setText(String.valueOf(logic.getBulls()));
@@ -81,6 +83,7 @@ public class GamePageActivity extends Activity {
                     row.addView(bullsCount);
 
                     table.addView(row);
+                    table.setStretchAllColumns(true);
                 }
 
                 wordText.setText("");
