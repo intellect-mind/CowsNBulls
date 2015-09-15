@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -81,15 +82,16 @@ public class GamePageActivity extends Activity {
             }
         });
 
+        final LinearLayout inputLayout = (LinearLayout) findViewById(R.id.input_layout);
+
         ImageButton pauseButton = (ImageButton)findViewById(R.id.pause);
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(GamePageActivity.this,PauseWindow.class));
-                
 
-
-
+                inputLayout.setAlpha(0.2f);
             }
         });
 
