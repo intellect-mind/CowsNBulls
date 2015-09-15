@@ -11,16 +11,10 @@
         android:layout_height="519dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-<<<<<<< HEAD
-        android:layout_marginTop="100dp"
-        android:background="@color/white"
-        android:visibility="gone">
-
-=======
         android:layout_marginTop="25dp"
         android:background="@color/white"
         android:padding="2dp">
->>>>>>> origin/master
+
 
         <EditText android:id="@+id/word_text"
             android:layout_width="200dip"
